@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "155184541998",
+    "project_id": "stockalert-2273e",
+    "storage_bucket": "stockalert-2273e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155184541998:android:2608e046228ef45e2d8abf",
+        "android_client_info": {
+          "package_name": "com.app.stockalert"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "155184541998-oc0aunac38398i75nu88gitlqs0dcgab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsC8Rk37DIN43rSTpe2RF191x4AOPTmWc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "155184541998-oc0aunac38398i75nu88gitlqs0dcgab.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "155184541998-ms7cemq9g44v6hjpooopbiv6iqu2fg6m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.stockalert"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
