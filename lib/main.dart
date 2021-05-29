@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:stockalerts/DB/SQLITE.dart';
 import 'package:stockalerts/Pages/temp.dart';
 
 void main() async {
   //setupLocator();
-
+  //await SQLITE.init();
   runApp(MyApp());
 }
 

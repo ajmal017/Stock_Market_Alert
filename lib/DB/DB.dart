@@ -2,6 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
+import 'dart:convert';
+import 'package:convert/convert.dart';
+import 'package:crypto/crypto.dart' as crypto;
 
 class DB {
   static String email = 'mashkar';
@@ -109,6 +112,8 @@ class DB {
     final CollectionReference collection =
         Firestore.instance.collection('users');
     bool stat = true;
+    var pass = crypto.md5.convert(utf8.encode(password)).toString();
+
     await collection.document(email).get().then((value) => {
           if (value.exists)
             {
@@ -117,13 +122,8 @@ class DB {
         });
     if (!stat) return false;
 
-    await collection.document(email).setData({
-      "name": name,
-      "email": email,
-      "password": password,
-      "news": [],
-      "stocks": []
-    });
+    await collection.document(email).setData(
+        {"name": name, "email": email, "password": pass, "stocks": []});
 
     return stat;
   }
@@ -133,6 +133,7 @@ class DB {
     final CollectionReference collection =
         Firestore.instance.collection('users');
     bool stat = true;
+    var pass = crypto.md5.convert(utf8.encode(password)).toString();
     await collection.document(email).get().then((value) => {
           if (!value.exists)
             {
@@ -143,13 +144,33 @@ class DB {
     if (!stat) return false;
 
     await collection.document(email).get().then((value) => {
-          if (value.data['password'] != password)
+          if (value.data['password'] != pass)
             {
               stat = false,
             }
         });
     if (!stat) return false;
 
+    return stat;
+  }
+
+  static Future<dynamic> getsignals() async {
+    final CollectionReference collection =
+        Firestore.instance.collection('messages');
+    var stat = [];
+    await collection.document('signals').get().then((value) => {
+          if (value.exists)
+            {
+              value.data.forEach((key, value) {
+                var list = [];
+                print(key);
+                list.add(key);
+                list.add(value);
+                stat.add(list);
+              })
+            }
+        });
+    print(stat[0][1]['entry_price']);
     return stat;
   }
 }

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:stockalerts/DB/DB.dart';
+import 'package:stockalerts/DB/SQLITE.dart';
 import 'package:stockalerts/Pages/AboutUs.dart';
 import 'package:stockalerts/Pages/Search_UI.dart';
+import 'package:stockalerts/Pages/cht.dart';
+import 'package:stockalerts/Pages/signals.dart';
 import 'package:stockalerts/Pages/watchlist.dart';
 import 'package:stockalerts/widget/FilteredStockList.dart';
 
@@ -34,6 +38,16 @@ class _PorfolioState extends State<Porfolio> {
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 25,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Divider(
+                        color: Colors.white,
+                      ),
+                      Text(
+                        "Logged In As : " + DB.email,
+                        style: TextStyle(
+                            color: Colors.lightGreen,
+                            fontSize: 10,
                             fontWeight: FontWeight.bold),
                       ),
                       Divider(
@@ -126,6 +140,99 @@ class _PorfolioState extends State<Porfolio> {
                               ),
                             ),
                           )
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              color: const Color(0xff010114),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    color: const Color(0xff010114),
+                                    child: IconButton(
+                                      icon: Icon(Icons.account_tree_outlined),
+                                      iconSize: 50,
+                                      color: Colors.white,
+                                      tooltip: 'Signals',
+                                      onPressed: () => {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => Signals()),
+                                        )
+                                      },
+                                    ),
+                                  ),
+                                  Text(
+                                    "Signals",
+                                    style: TextStyle(color: Colors.white),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              color: const Color(0xff010114),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    color: const Color(0xff010114),
+                                    child: IconButton(
+                                      icon: Icon(Icons.chat),
+                                      iconSize: 50,
+                                      color: Colors.white,
+                                      tooltip: 'Chat',
+                                      onPressed: () => {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => Chat()),
+                                        )
+                                      },
+                                    ),
+                                  ),
+                                  Text(
+                                    "Chat",
+                                    style: TextStyle(color: Colors.white),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              color: const Color(0xff010114),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    color: const Color(0xff010114),
+                                    child: IconButton(
+                                      icon: Icon(Icons.logout),
+                                      iconSize: 50,
+                                      color: Colors.white,
+                                      tooltip: 'LogOut',
+                                      onPressed: () => {
+                                        DB.email = "mashkar",
+                                        SQLITE.logout().then(
+                                            (value) => {Navigator.pop(context)})
+                                      },
+                                    ),
+                                  ),
+                                  Text(
+                                    "LogOut",
+                                    style: TextStyle(color: Colors.white),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                       Divider(

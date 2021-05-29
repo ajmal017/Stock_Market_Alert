@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stockalerts/DB/DB.dart';
+import 'package:stockalerts/DB/SQLITE.dart';
 
 import 'package:stockalerts/Pages/Portfolio_Home.dart';
 
@@ -155,10 +156,9 @@ class _LogInState extends State<LogIn> {
             {
               this.text = "success",
               DB.email = email,
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Porfolio()),
-              ),
+              SQLITE.login(email).then((value) => {
+                    Navigator.pop(context),
+                  })
             }
           else
             {showDialogs("Failed", "Invalid Login ")}
@@ -175,6 +175,16 @@ class _LogInState extends State<LogIn> {
         .hasMatch(email);
     if (!emailValid) {
       showDialogs("Failed", "Invalid Email ");
+      return false;
+    }
+    bool nameValid = name.length < 5 ? false : true;
+    if (!nameValid) {
+      showDialogs("Failed", "Name Min Length 5 ");
+      return false;
+    }
+    bool passValid = password.length < 6 ? false : true;
+    if (!passValid) {
+      showDialogs("Failed", "Password Min Length 6 ");
       return false;
     }
     DB.signup(name, email, password).then((val) => {

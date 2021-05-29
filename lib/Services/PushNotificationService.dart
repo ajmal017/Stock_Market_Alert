@@ -14,6 +14,7 @@ class FCM {
   final streamCtlr = StreamController<String>.broadcast();
 
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+
   static Future<dynamic> handleBackgroundMessage(
       Map<String, dynamic> message) async {
     await DB.is_user_exists(DB.email).then((value) => {
@@ -25,7 +26,7 @@ class FCM {
                         if (value == 2)
                           {
                             print("IM"),
-                            DB.addNews(DB.email, message),
+                            //DB.addNews(DB.email, message),
                           }
                       }),
             }
@@ -37,6 +38,8 @@ class FCM {
       _firebaseMessaging
           .requestNotificationPermissions(IosNotificationSettings());
     }
+    _firebaseMessaging.subscribeToTopic('ALL');
+    print("I Subscribed");
     _firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) async {
         print("onMessage1: $message");
