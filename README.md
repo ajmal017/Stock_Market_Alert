@@ -22,6 +22,6 @@ Flutter app that will show/alert details about realtime stock changes in US stoc
 - IEX Cloud
 
 #### Type
-> fiverr project
+> fiverr self project
 
 #### Screenshots
