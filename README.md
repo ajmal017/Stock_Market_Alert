@@ -1,16 +1,27 @@
-# stockalerts
+# Stock Alerts
+Flutter app that will show/alert details about realtime stock changes in US stock market.
+#### Features
+- Log In / Log Out
+- Sign Up
+- Portfolio
+- Chat
+- Stock Signals
+- Watchlist
+- Search for stock
+- View details about specific stock
+- Stock Graphs
+- Stock News
 
-A new Flutter project.
+#### Tech
+- Flutter
+- Dart
+- Firestore
+- Firebase cloud messaging
+- Note Js / Express Js
+- Heroku
+- IEX Cloud
 
-## Getting Started
+#### Type
+> fiverr project
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#### Screenshots
